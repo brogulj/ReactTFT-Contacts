@@ -38,7 +38,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     gap: 1em;
     margin-bottom: 1em;
@@ -72,6 +71,24 @@
     }
 
     .include {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1em;
+        input,
+        select {
+            color: $primary;
+            border: none;
+        }
+
+        select {
+            padding-left: 2em;
+            border-left: 1px solid $primary;
+            flex-shrink: 0;
+        }
+    }
+
+    .sort {
         display: flex;
         flex-direction: row;
         justify-content: space-between;

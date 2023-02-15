@@ -67,7 +67,21 @@ const ContactsSearch: React.FC<{
             .filter((contact) => {
                 if (searchBy === "name") {
                     if (
-                        (contact.name + contact.surname)
+                        contact.name
+                            .toLocaleLowerCase()
+                            .includes(
+                                searchByValue
+                                    .toLocaleLowerCase()
+                                    .replaceAll(" ", "")
+                            )
+                    ) {
+                        return contact;
+                    }
+
+                    return false;
+                } else if (searchBy === "surname") {
+                    if (
+                        contact.surname
                             .toLocaleLowerCase()
                             .includes(
                                 searchByValue
@@ -211,21 +225,24 @@ const ContactsSearch: React.FC<{
                 className="contacts__search"
                 placeholder="Search name..."
             />
-            <select
-                name="filter"
-                id="filter"
-                defaultChecked={true}
-                value={filter}
-                onChange={(e) => {
-                    setFilter(e.target.value);
-                }}
-                className="contacts__filter"
-            >
-                <option value="favourite">FAVOURITE</option>
-                <option value="name">NAME</option>
-                <option value="gender">GENDER</option>
-                <option value="age">AGE</option>
-            </select>
+            <div className="sort">
+                Sort by
+                <select
+                    name="filter"
+                    id="filter"
+                    defaultChecked={true}
+                    value={filter}
+                    onChange={(e) => {
+                        setFilter(e.target.value);
+                    }}
+                    className="contacts__filter"
+                >
+                    <option value="favourite">FAVOURITE</option>
+                    <option value="name">NAME</option>
+                    <option value="gender">GENDER</option>
+                    <option value="age">AGE</option>
+                </select>
+            </div>
             <div className="include">
                 Include:
                 <select
@@ -233,6 +250,7 @@ const ContactsSearch: React.FC<{
                     id="include"
                     onChange={(e) => setTypesToInclude(e.target.value)}
                 >
+                    <option value="all">All</option>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                     <option value="pager">Pager</option>
