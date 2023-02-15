@@ -1,6 +1,6 @@
 import "./contacts.scss";
 import { auth, database } from "../../firebase";
-import { Contact } from "../../types/types";
+import { Contact, Gender } from "../../types/types";
 import { get, ref, remove } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -21,6 +21,7 @@ const ViewContact = () => {
         landline: "",
         address: "",
         birthdate: "",
+        gender: Gender.OTHER,
     });
 
     useEffect(() => {

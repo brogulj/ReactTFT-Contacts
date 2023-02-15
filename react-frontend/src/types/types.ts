@@ -3,8 +3,8 @@ export type Contact = {
     name: string;
     surname: string;
     favourite: boolean;
-    gender?: Gender;
-    birthdate?: string;
+    gender: Gender;
+    birthdate: string;
     email?: string;
     phone?: string;
     pager?: string;
