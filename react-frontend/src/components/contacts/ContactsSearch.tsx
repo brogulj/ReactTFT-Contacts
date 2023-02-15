@@ -65,9 +65,6 @@ const ContactsSearch: React.FC<{
                 return false;
             })
             .filter((contact) => {
-                console.log("filtering contac");
-                console.log(searchBy);
-                console.log(searchByValue);
                 if (searchBy === "name") {
                     if (
                         (contact.name + contact.surname)
@@ -157,6 +154,37 @@ const ContactsSearch: React.FC<{
                     }
 
                     return false;
+                } else if (searchBy === "birthdate") {
+                    if (
+                        contact.birthdate !== undefined &&
+                        (contact.birthdate
+                            .toLocaleLowerCase()
+                            .replaceAll("-0", "")
+                            .replaceAll("-", "")
+                            .includes(
+                                searchByValue
+                                    .toLocaleLowerCase()
+                                    .replaceAll(" ", "")
+                                    .replaceAll(".", "")
+                            ) ||
+                            contact.birthdate
+                                .toLocaleLowerCase()
+                                .replaceAll("-0", "")
+                                .replaceAll("-", "")
+                                .includes(
+                                    searchByValue
+                                        .split(".")
+                                        .reverse()
+                                        .join("")
+                                        .toLocaleLowerCase()
+                                        .replaceAll(" ", "")
+                                        .replaceAll("/", "")
+                                ))
+                    ) {
+                        return contact;
+                    }
+
+                    return false;
                 }
             });
 
@@ -225,6 +253,7 @@ const ContactsSearch: React.FC<{
                 >
                     <option value="name">Name</option>
                     <option value="surname">Surname</option>
+                    <option value="birthdate">Birthdate</option>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                     <option value="pager">Pager</option>
