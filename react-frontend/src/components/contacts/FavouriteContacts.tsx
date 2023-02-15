@@ -1,17 +1,15 @@
 import "./contacts.scss";
 import ContactsList from "./ContactsList";
-import ContactsSearch from "./ContactsSearch";
 import { auth, database } from "../../firebase";
-import { Contact, Gender } from "../../types/types";
-import { onValue, ref, set } from "firebase/database";
+import { Contact } from "../../types/types";
+import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate } from "react-router-dom";
 
 const ContactsPage = () => {
-    const [user, userLoading, error] = useAuthState(auth);
+    const [user, userLoading] = useAuthState(auth);
     const [contacts, setContacts] = useState<Contact[]>([]);
-    const [contactsToShow, setContactsToShow] = useState<Contact[]>([]);
 
     useEffect(() => {
         if (user === null || user === undefined) return;

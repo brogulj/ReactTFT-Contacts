@@ -9,7 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate } from "react-router-dom";
 
 const ContactsPage = () => {
-    const [user, userLoading, error] = useAuthState(auth);
+    const [user, userLoading] = useAuthState(auth);
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [contactsToShow, setContactsToShow] = useState<Contact[]>([]);
 

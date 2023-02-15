@@ -2,12 +2,7 @@ import "./contacts.scss";
 import { auth, database } from "../../firebase";
 import { Contact, Gender } from "../../types/types";
 import PopUp from "../utility/PopUp";
-import {
-    get,
-    ref,
-    set,
-    update
-    } from "firebase/database";
+import { get, ref, update } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -16,7 +11,6 @@ import {
     useNavigate,
     useParams
     } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
 const EditContact = () => {
     const [user, userLoading] = useAuthState(auth);

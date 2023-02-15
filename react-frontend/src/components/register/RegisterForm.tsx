@@ -1,16 +1,12 @@
 import { auth } from "../../firebase";
 import PopUp from "../utility/PopUp";
-import { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, Navigate } from "react-router-dom";
-import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateCurrentUser,
-} from "firebase/auth";
 
 const RegisterForm = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [updateProfile, updating] = useUpdateProfile(auth);
 
     const [email, setEmail] = useState("");

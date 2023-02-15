@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate } from "react-router-dom";
 
 const Home = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     return (
         <>

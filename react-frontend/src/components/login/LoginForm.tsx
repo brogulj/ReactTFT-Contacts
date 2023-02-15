@@ -1,14 +1,13 @@
-import loader from "../../assets/bars.svg";
 import { auth } from "../../firebase";
 import Loader from "../utility/Loader";
 import PopUp from "../utility/PopUp";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate } from "react-router-dom";
 
 const LoginForm = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -9,7 +9,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const ViewContact = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [user, userLoading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [contact, setContact] = useState<Contact>({
         id: "",
         name: "",

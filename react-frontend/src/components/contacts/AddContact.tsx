@@ -3,7 +3,7 @@ import { auth, database } from "../../firebase";
 import { Contact, Gender } from "../../types/types";
 import PopUp from "../utility/PopUp";
 import { ref, set } from "firebase/database";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
