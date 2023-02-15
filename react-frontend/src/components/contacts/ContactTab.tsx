@@ -70,11 +70,7 @@ const ContactTab: React.FC<{ contact: Contact }> = ({ contact }) => {
 
     return (
         <div className="contacts__tab-wrapper">
-            <div
-                key={contact.id}
-                className="contacts__contact-tab"
-                id={contact.id}
-            >
+            <div className="contacts__contact-tab" id={contact.id}>
                 <div
                     className="contacts__main-info"
                     onClick={() => handleClickContact(contact.id)}
