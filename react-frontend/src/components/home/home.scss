@@ -1,0 +1,31 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.home {
+    @include min-height-ui;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+        color: $highlight-color;
+        margin-bottom: 2em;
+        text-shadow: 3px 3px 0px $secondary;
+    }
+
+    .button {
+        @include rounded-box-small;
+        background-color: $primary;
+        outline: none;
+        border: none;
+        width: clamp(200px, 50vw, 400px);
+        text-align: center;
+        font-size: 1.5em;
+        border: $highlight-color 1px solid;
+
+        margin-bottom: 1em;
+    }
+}

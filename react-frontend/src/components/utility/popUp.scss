@@ -1,0 +1,25 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.pop-up {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    padding: 1em;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pop-up__container {
+        @include rounded-box;
+        padding: 2em;
+        background-color: $background-color;
+    }
+
+    button {
+        @include main-button;
+
+        margin-top: 1em;
+    }
+}

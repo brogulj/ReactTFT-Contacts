@@ -1,0 +1,102 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+nav {
+    height: 93px;
+}
+
+.nav__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $primary;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 15px 2em 30px;
+    z-index: 1000;
+
+    a {
+        margin: 0;
+        font-size: 1.8em;
+        font-weight: 800;
+    }
+}
+
+.hamburger {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    div {
+        height: 1.9px;
+        background-color: $highlight-color;
+        width: 60px;
+        margin-top: 15px;
+    }
+}
+
+.nav__links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    height: 100%;
+    padding: 0 2em;
+    background-color: $background-color;
+    height: 100vh;
+    width: 100vw;
+    font-size: 1.5em;
+    z-index: 1000;
+
+    a {
+        @include rounded-box-small;
+        @include responsive-width-narrow;
+
+        width: 100%;
+        position: relative;
+        background-color: $background-color;
+        text-align: center;
+        border: 1px solid rgba($color: $highlight-color, $alpha: 0.2);
+
+        &:hover {
+            .border {
+                opacity: 0.7;
+            }
+        }
+
+        .border {
+            content: "";
+            @include rounded-box-small;
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            bottom: -2px;
+            right: -2px;
+            background: radial-gradient(
+                50vw circle at var(--x) var(--y),
+                $highlight-color 10%,
+                transparent 90%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+    }
+}
+
+.nav__links--active {
+    display: flex !important;
+}

@@ -1,0 +1,47 @@
+@mixin rounded-box {
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+@mixin rounded-box-small {
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+@mixin main-button {
+    @include rounded-box-small;
+
+    background-color: $highlight-color;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    max-width: 400px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin grow($scale: 1.1, $duration: 0.2s) {
+    transition: transform $duration ease-in-out;
+
+    &:hover {
+        transform: scale($scale);
+    }
+}
+
+@mixin min-height-ui {
+    min-height: calc(100vh - 95px);
+}
+
+@mixin responsive-width-narrow {
+    @media screen and (min-width: 760px) {
+        width: 80vw;
+    }
+    @media screen and (min-width: 1024px) {
+        width: 60vw;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 50vw;
+    }
+}

@@ -1,0 +1,323 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.female-icon {
+    filter: invert(27%) sepia(66%) saturate(5628%) hue-rotate(321deg)
+        brightness(106%) contrast(94%);
+}
+.male-icon {
+    filter: invert(65%) sepia(33%) saturate(2598%) hue-rotate(168deg)
+        brightness(102%) contrast(94%);
+}
+
+.other-icon {
+    filter: invert(100%);
+}
+
+.contacts {
+    @include min-height-ui;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+
+    & > a {
+        @include rounded-box-small;
+
+        border: rgba($color: $highlight-color, $alpha: 0.2) 1px solid;
+        width: 100%;
+        font-weight: 500;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 1em;
+    }
+}
+
+.contacts__nav {
+    @include rounded-box-small;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+    background-color: $primary;
+    width: 100%;
+    padding: 1em;
+
+    & > * {
+        @include rounded-box-small;
+
+        background-color: $text-color;
+        padding: 1rem;
+        color: $primary;
+        transition: all 0.2s ease-in-out;
+        border: none;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .contacts__search {
+        &::placeholder {
+            color: $primary !important;
+        }
+
+        &:hover {
+            cursor: text;
+        }
+    }
+
+    .contacts__filter {
+    }
+
+    a {
+        @include main-button;
+
+        font-weight: 500;
+        font-size: 1em;
+    }
+
+    @media screen and (min-width: 1024px) {
+        & > * {
+            width: calc(33% - 0.67em);
+        }
+    }
+}
+
+.contacts__tab-wrapper {
+    width: 100%;
+    z-index: 10;
+
+    @media screen and (min-width: 1024px) {
+        width: 49.1%;
+    }
+}
+
+.contacts__contact-tab {
+    @include rounded-box-small;
+
+    width: 100%;
+    background-color: $primary;
+    opacity: 1;
+    position: relative;
+    border: 1px solid rgba($color: $highlight-color, $alpha: 0.2);
+
+    .contacts__main-info {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        div:first-child {
+            flex-grow: 0;
+        }
+
+        div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            flex-grow: 1;
+            font-size: 1.2em;
+
+            p {
+                width: 100%;
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            img {
+                height: 25px;
+                align-self: flex-end;
+                margin-right: 1em;
+                filter: invert(100%);
+            }
+        }
+    }
+
+    &:hover {
+        .border {
+            opacity: 0.7;
+        }
+    }
+
+    .border {
+        content: "";
+        @include rounded-box-small;
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        bottom: -2px;
+        right: -2px;
+        background: radial-gradient(
+            50vw circle at var(--x) var(--y),
+            $highlight-color 10%,
+            transparent 95%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: -1;
+    }
+}
+
+.contacts__contact-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    gap: 1em;
+}
+
+.contacts__form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts__contact-form {
+    @include responsive-width-narrow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    padding: 1em;
+
+    label {
+        font-weight: bold;
+        font-size: 1.2em;
+
+        &.important {
+            color: $highlight-color;
+        }
+    }
+
+    & > input,
+    select {
+        @include rounded-box-small;
+
+        background-color: $secondary;
+        color: $text-color;
+        padding: 4px 8px;
+        font-size: 1em;
+        transition: all 0.2s ease-in-out;
+        border: none;
+        width: 100%;
+    }
+
+    & > input[type="submit"] {
+        @include main-button;
+
+        margin-top: 2em;
+    }
+
+    .contacts__contact-form > input {
+        &::placeholder {
+            color: $primary !important;
+        }
+    }
+
+    .contacts__contact-form--button {
+        @include main-button;
+    }
+
+    a {
+        @include rounded-box-small;
+
+        border: rgba($color: $highlight-color, $alpha: 0.2) 1px solid;
+        width: 100%;
+        font-weight: 500;
+        font-size: 1em;
+        text-align: center;
+    }
+}
+
+.contacts__contact-dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    & > * {
+        @include rounded-box-small;
+
+        background-color: $secondary;
+        color: $text-color;
+        padding: 4px 8px;
+        font-size: 1em;
+        transition: all 0.2s ease-in-out;
+        border: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    &.active {
+        height: 174.3px;
+        margin-top: 1em;
+    }
+}
+
+.contact__details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+
+    a,
+    button {
+        @include main-button;
+        margin-top: 1em;
+        text-align: center;
+        width: clamp(200px, 50%, 300px);
+    }
+}
+
+.contact__details {
+    @include rounded-box;
+    @include responsive-width-narrow;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    align-items: flex-start;
+    padding: 2em;
+    background-color: $primary;
+
+    & > h1 {
+        margin-top: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .contacts__details-info {
+        p {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            text-align: left;
+
+            b {
+                margin-right: 10px;
+            }
+        }
+    }
+}
