@@ -17,6 +17,17 @@ const ContactsSearch: React.FC<{
     const [filter, setFilter] = useState<string>("favourite");
     const [typesToInclude, setTypesToInclude] = useState<string>("all");
 
+    const stringIncludes = (string: string, search: string) => {
+        if (
+            string
+                .toLocaleLowerCase()
+                .includes(search.toLocaleLowerCase().replaceAll(" ", ""))
+        ) {
+            return true;
+        }
+        return false;
+    };
+
     useEffect(() => {
         let newContacts = [...contacts];
 
@@ -80,29 +91,15 @@ const ContactsSearch: React.FC<{
 
                     return false;
                 } else if (searchBy === "surname") {
-                    if (
-                        contact.surname
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
-                    ) {
+                    if (stringIncludes(contact.surname, searchByValue)) {
                         return contact;
                     }
 
                     return false;
                 } else if (searchBy === "email") {
                     if (
-                        contact.email !== undefined &&
-                        contact.email
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
+                        contact.email &&
+                        stringIncludes(contact.email, searchByValue)
                     ) {
                         return contact;
                     }
@@ -110,14 +107,8 @@ const ContactsSearch: React.FC<{
                     return false;
                 } else if (searchBy === "phone") {
                     if (
-                        contact.phone !== undefined &&
-                        contact.phone
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
+                        contact.phone &&
+                        stringIncludes(contact.phone, searchByValue)
                     ) {
                         return contact;
                     }
@@ -125,14 +116,8 @@ const ContactsSearch: React.FC<{
                     return false;
                 } else if (searchBy === "pager") {
                     if (
-                        contact.pager !== undefined &&
-                        contact.pager
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
+                        contact.pager &&
+                        stringIncludes(contact.pager, searchByValue)
                     ) {
                         return contact;
                     }
@@ -140,14 +125,8 @@ const ContactsSearch: React.FC<{
                     return false;
                 } else if (searchBy === "landline") {
                     if (
-                        contact.landline !== undefined &&
-                        contact.landline
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
+                        contact.landline &&
+                        stringIncludes(contact.landline, searchByValue)
                     ) {
                         return contact;
                     }
@@ -155,14 +134,8 @@ const ContactsSearch: React.FC<{
                     return false;
                 } else if (searchBy === "address") {
                     if (
-                        contact.address !== undefined &&
-                        contact.address
-                            .toLocaleLowerCase()
-                            .includes(
-                                searchByValue
-                                    .toLocaleLowerCase()
-                                    .replaceAll(" ", "")
-                            )
+                        contact.address &&
+                        stringIncludes(contact.address, searchByValue)
                     ) {
                         return contact;
                     }
