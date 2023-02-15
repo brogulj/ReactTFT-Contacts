@@ -198,21 +198,24 @@ const ContactsSearch: React.FC<{
                 <option value="gender">GENDER</option>
                 <option value="age">AGE</option>
             </select>
-            <select
-                name="include"
-                id="include"
-                onChange={(e) => setTypesToInclude(e.target.value)}
-            >
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-                <option value="pager">Pager</option>
-                <option value="landline">Landline</option>
-                <option value="address">Address</option>
-            </select>
+            <div className="include">
+                Include:
+                <select
+                    name="include"
+                    id="include"
+                    onChange={(e) => setTypesToInclude(e.target.value)}
+                >
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="pager">Pager</option>
+                    <option value="landline">Landline</option>
+                    <option value="address">Address</option>
+                </select>
+            </div>
             <div className="search-by">
                 <input
                     type="text"
-                    placeholder="Search by some value"
+                    placeholder="Search by..."
                     onChange={(e) => setSearchByValue(e.target.value)}
                 />
                 <select

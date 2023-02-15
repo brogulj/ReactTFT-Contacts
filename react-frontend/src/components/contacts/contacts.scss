@@ -71,6 +71,24 @@
         }
     }
 
+    .include {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1em;
+        input,
+        select {
+            color: $primary;
+            border: none;
+        }
+
+        select {
+            padding-left: 2em;
+            border-left: 1px solid $primary;
+            flex-shrink: 0;
+        }
+    }
+
     .search-by {
         display: flex;
         flex-direction: row;
@@ -84,6 +102,10 @@
         select {
             padding-left: 2em;
             border-left: 1px solid $primary;
+        }
+
+        input {
+            min-width: 0;
         }
     }
 
